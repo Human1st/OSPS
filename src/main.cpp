@@ -9,6 +9,12 @@ int main(int ac, char **av)
     //std::cout << fps.scan("0695939179").toString()<< std::endl;
 
     PhoneScan::GlobalPhoneScan gps = PhoneScan::GlobalPhoneScan("resources");
-    //gps.scan("+33695939179");
-    std::cout << gps.scan("+33695939179").toString()<<std::endl;
+    if(ac == 2)
+	    std::cout << gps.scan(av[1]).getOperator()<<std::endl;
+    else {
+    	std::string lin = "";
+    	while(std::getline (std::cin,lin)) {
+    		std::cout << gps.scan(lin).getOperator()<<std::endl;
+    	}
+    }
 }
